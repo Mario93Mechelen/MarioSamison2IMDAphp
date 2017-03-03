@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include_once 'products.inc.php'; 
 $productId = $_GET['productid'];
 ?>
@@ -29,6 +30,10 @@ $productId = $_GET['productid'];
 			float:left;
 			margin-top:80px;
 		}
+		.clearfix
+		{
+			clear:both;
+		}
 	</style>
 </head>
 <body>
@@ -42,5 +47,12 @@ $productId = $_GET['productid'];
 		<button>Buy Now</button>
 	</form>
 	</div>
+	<div class="clearfix"></div>
+	<?php 
+	if(isset($_POST['key']))
+	{	array_push($_SESSION['cart'],$_POST['key']);
+	}
+	include_once 'cart.inc.php';
+	?>
 </body>
 </html>

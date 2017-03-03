@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,5 +23,6 @@
 		</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php include 'cart.inc.php'; ?>
 </body>
 </html>
