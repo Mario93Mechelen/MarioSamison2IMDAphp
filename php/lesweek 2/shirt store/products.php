@@ -13,12 +13,12 @@
 <body>
 <?php include_once 'products.inc.php'; ?>
 	<ul>
-		<?php foreach($products as $p): ?>
+		<?php foreach($products as $key => $p): ?>
 		<li>
 			<p><?php echo $p['title']; ?>
 			</p>
 			<img src="<?php echo $p['pic']; ?>" alt="tie">
-			<a href=""><?php echo $p['info']; ?></a>
+			<a href="details.php?productid=<?php echo $key; ?>"><?php echo $p['info']; ?></a>
 		</li>
 		<?php endforeach; ?>
 	</ul>
