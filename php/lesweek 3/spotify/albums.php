@@ -59,7 +59,7 @@
 		$query = "SELECT * FROM albums WHERE (artist_id = '".$artistid."');";
 		$result = $con->query($query);
 		while( $row = mysqli_fetch_array($result) ){
-			echo "<a href='http://localhost/lesweek3/exercise/tracks.php?albumid=".$row['id']."'><div class='artists'><div class='photo'></div><p class='artisname'>".$row['title']."</p></div></a>";
+			echo "<a href='http://localhost/lesweek3/exercise/tracks.php?albumid=".$row['id']."'><div class='artists'><img class='photo' src='".$row['cover']."' alt='cover'><p class='artisname'>".$row['title']."</p></div></a>";
 		}
 	?>	
 	</div>
