@@ -1,38 +1,33 @@
 <?php
-   
-    // check of er gepost is?
-    if( !empty( $_POST ) )
-    {
-        // controle of alles is ingevuld
-       if( !empty( $_POST['username'] ) && !empty( $_POST['password'] ) && isset( $_POST['robot'] ) ){
-       
-        // connectie maken met sql
-        $conn = mysqli_connect("localhost", "root", "", "spotify");
-       
-        // insert query: gegevens naar databank sturen
-        $email = $_POST["username"];
-		$options = [
-			'cost'=>12,	
-		];
-        $password = password_hash($_POST["password"],PASSWORD_DEFAULT,$options);
-        $query = "INSERT INTO users (email, password) VALUES ('".$email."', '".$password."');";
-        if( $conn->query( $query ) )
-        {
-            // OK
-            session_start();
-            $_SESSION["user"] = $email;
-            header("Location: login.php");
+    //is er gepost
+    if(!empty($_POST)){
+        //is alles ingevuld
+        if(!empty($_POST['email']) && !empty($_POST['password'])){
+            //email + sh1(wachtwoord + salt) gevonden wordt in database
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            $conn = new mysqli("localhost", "root", "", "spotify");
+            
+            $query = "SELECT * FROM users
+                      WHERE (email = '".$conn->real_escape_string($email)."');";
+            
+            $result = $conn->query($query);
+            
+            $user = $result->fetch_assoc();
+            
+            if(password_verify($password, $user['password'])){
+                //OK
+                session_start();
+                $_SESSION['user'] = $email;
+				header("Location: artists.php");
+            }else{
+                //NIET OK
+               echo "<h1>Something went wrong</h1>";			
+            }
         }
-        else
-        {
-            echo "<h1>Oops, something went terribly wrong</h1>";
-        }
-       
-	   }
-	   }
-   
-   
- 
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +87,7 @@
 		{
 			margin:auto;
 			color:white;
-			width:230px;
+			width:210px;
 			height:10px;
 			padding-top:15px;
 		}
@@ -160,23 +155,19 @@
 			<div class="logosp"></div>
 			<div class="loginfb">
 				<p>
-					REGISTER WITH FACEBOOK
+					LOG IN WITH FACEBOOK
 				</p>
 			</div>
 			<form action="" method="post">
 				<div class="username">
-				<label for="username">Username</label>
-				<input type="text" name="username" id="username" placeholder="Your email or username"></div>
+				<label for="email">Username</label>
+				<input type="text" name="email" id="email" placeholder="Your email or username"></div>
 				<div class="password">
 				<label for="password">Password</label>
 				<input type="password" name="password" id="password" placeholder="Your password">
 				</div>
-				<div class="robot">
-				<input type="checkbox" name="robot" id="robot" value="I'm not a robot">
-				<p>I'm not a robot</p>
-				</div>
 				<button>
-					Register
+					Log In
 				</button>
 			</form>
 		</div>
