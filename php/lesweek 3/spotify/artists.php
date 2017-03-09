@@ -30,18 +30,33 @@
 			flex-direction: column;
 			cursor:pointer;
 		}
-		.artists p
+		a
 		{
 			text-align: center;
+			text-decoration: none;
+			color:white;
+			font-family:montserrat
 		}
 		.photo
 		{
 			flex-grow:2;
 			background-color: white;
 		}
+		.logout
+		{
+			background: transparent;
+			border:2px solid white;
+			width:100px;
+			height:50px;
+			border-radius:50px;
+			float:right;
+			margin-right:100px;
+		}
 	</style>
 </head>
 <body>
+<a href="login.php?logout=true"><div class="logout"><p>Log Out</p></div></a>
+<div class="container">
 <div class="container">
 	<!--<div class="artists"><div class="photo"></div><p class="artisname"></p></div>-->
 	<?php
@@ -49,7 +64,7 @@
 		$query = "SELECT * FROM artists;";
 		$result = $con->query($query);
 		while( $row = mysqli_fetch_array($result) ){
-			echo "<div class='artists'><div class='photo'></div><p class='artisname'>".$row['name']."</p></div>";
+			echo "<a href='http://localhost/lesweek3/exercise/albums.php?artistid=".$row['id']."'><div class='artists'><div class='photo'></div><p class='artisname'>".$row['name']."</p></div></a>";
 		}
 	?>
 </div>

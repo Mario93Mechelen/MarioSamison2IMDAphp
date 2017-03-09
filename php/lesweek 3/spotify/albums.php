@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Albums of </title>
+	<title>Albums</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<style>
 		body
@@ -49,9 +49,21 @@
 			height:150px;
 			margin-right:50px;
 		}
+		.logout
+		{
+			background: transparent;
+			border:2px solid white;
+			width:100px;
+			height:50px;
+			border-radius:50px;
+			float:right;
+			margin-right:100px;
+		}
 	</style>
 </head>
 <body>
+<a href="login.php?logout=true"><div class="logout"><p>Log Out</p></div></a>
+<div class="container">
 <div class="container">
 	<!--<div class="artists"><div class="photo"></div><p class="artisname"></p></div>-->
 	<?php
