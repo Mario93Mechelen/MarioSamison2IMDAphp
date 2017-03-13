@@ -64,13 +64,20 @@
 <body>
 <a href="login.php?logout=true"><div class="logout"><p>Log Out</p></div></a>
 <div class="container">
-<div class="container">
 	<!--<div class="artists"><div class="photo"></div><p class="artisname"></p></div>-->
 	<?php
-		$con = new mysqli("localhost","root","","spotify");
+		/*$con = new mysqli("localhost","root","","spotify");
 		$query = "SELECT * FROM albums WHERE (artist_id = '".$artistid."');";
 		$result = $con->query($query);
 		while( $row = mysqli_fetch_array($result) ){
+			echo "<a href='http://localhost/lesweek3/exercise/tracks.php?albumid=".$row['id']."'><div class='artists'><img class='photo' src='".$row['cover']."' alt='cover'><p class='artisname'>".$row['title']."</p></div></a>";
+		}*/
+		$conn = new PDO('mysql:host=localhost;dbname=spotify', "root", "");
+		$sth = $conn->prepare("SELECT * FROM albums WHERE artist_id = :id;");
+		$sth->bindParam(':id', $artistid);
+		// Or sth->bindParam(':name', $_POST['namefromform']); depending on application
+		$sth->execute();
+		while( $row = $sth->fetch() ){
 			echo "<a href='http://localhost/lesweek3/exercise/tracks.php?albumid=".$row['id']."'><div class='artists'><img class='photo' src='".$row['cover']."' alt='cover'><p class='artisname'>".$row['title']."</p></div></a>";
 		}
 	?>	
