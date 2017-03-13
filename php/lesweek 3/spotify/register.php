@@ -7,7 +7,7 @@
        if( !empty( $_POST['username'] ) && !empty( $_POST['password'] ) && isset( $_POST['robot'] ) ){
        
         // connectie maken met sql
-        $conn = mysqli_connect("localhost", "root", "", "spotify");
+        $conn = new PDO('mysql:host=localhost;dbname=spotify', "root", "");
        
         // insert query: gegevens naar databank sturen
         $email = $_POST["username"];
@@ -15,8 +15,12 @@
 			'cost'=>12,	
 		];
         $password = password_hash($_POST["password"],PASSWORD_DEFAULT,$options);
-        $query = "INSERT INTO users (email, password) VALUES ('".$email."', '".$password."');";
-        if( $conn->query( $query ) )
+		$sth = $conn->prepare("INSERT INTO users (email, password) VALUES (:email, :password);");
+		$sth->bindParam(':email', $email);
+		$sth->bindParam(':password', $password);
+			// Or sth->bindParam(':name', $_POST['namefromform']); depending on application
+		$sth->execute();
+        if( $sth -> execute() )
         {
             // OK
             session_start();

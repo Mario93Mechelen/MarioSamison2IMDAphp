@@ -1,3 +1,12 @@
+	<?php
+		if( isset($_GET['logout'] ) ){
+		$logout = $_GET['logout'];
+		if( $logout==true ){
+			session_start();
+			session_destroy();
+		}
+		}
+	?>
 <?php
     //is er gepost
     if(!empty($_POST)){
@@ -7,16 +16,13 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
             
-            $conn = new mysqli("localhost", "root", "", "spotify");
-            
-            $query = "SELECT * FROM users
-                      WHERE (email = '".$conn->real_escape_string($email)."');";
-            
-            $result = $conn->query($query);
-            
-            $user = $result->fetch_assoc();
-            
-            if(password_verify($password, $user['password'])){
+            $conn = new PDO('mysql:host=localhost;dbname=spotify', "root", "");
+            $sth = $conn->prepare("SELECT * FROM users WHERE email = :email;");
+			$sth->bindParam(':email', $email);
+			// Or sth->bindParam(':name', $_POST['namefromform']); depending on application
+			$sth->execute();
+			$res = $sth->fetch();
+            if(password_verify($password, $res['password'])){
                 //OK
                 session_start();
                 $_SESSION['user'] = $email;
@@ -33,7 +39,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Register</title>
+	<title>Log In</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<style>
 		body
