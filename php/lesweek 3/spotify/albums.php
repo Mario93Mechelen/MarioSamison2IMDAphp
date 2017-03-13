@@ -1,6 +1,12 @@
 <?php
 	session_start();
 	$artistid=$_GET['artistid'];
+	if ( isset($_SESSION['user'] ) ){
+		
+	}
+	else{
+		header('Location: login.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +17,7 @@
 	<style>
 		body
 		{
-			background-color: black;
+			background-color: #121314;
 			font-family: montserrat;
 			color:white;
 		}
@@ -26,7 +32,7 @@
 		}
 		.artists
 		{
-			background-color: darkslategrey;
+			background-color: #222326;
 			height:150px;
 			width:100%;
 			margin:50px;
