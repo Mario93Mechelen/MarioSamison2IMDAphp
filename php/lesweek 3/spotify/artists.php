@@ -7,7 +7,7 @@
 	<style>
 		body
 		{
-			background-color: black;
+			background-color: #121314;
 			font-family:montserrat;
 			color:white;
 		}
@@ -22,7 +22,7 @@
 		}
 		.artists
 		{
-			background-color: darkslategrey;
+			background-color: #222326;
 			height:150px;
 			width:150px;
 			margin:50px;
