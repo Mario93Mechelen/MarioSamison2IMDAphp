@@ -11,42 +11,38 @@
             $AantalD = $_POST['AantalDeuren'];
             $MaxLast = $_POST['MaxLast'];
             $Stereo = $_POST['StereoInstallatie'];
-
-            //date_default_timezone_set("UTC");
-            //$time = "UTC".time();
-
-            //if ($time >= 12){
-                if ($SI == "y" && empty($ML)) {
+			
+                if ($Stereo == "y" && empty($MaxLast)) {
                     $sportwagen = new sportwagen();
-                    $sportwagen->merk = $Merk;
+                    $sportwagen->Merk = $Merk;
                     $sportwagen->AantalPassagiers = $AantalP;
                     $sportwagen->AantalDeuren = $AantalD;
                     $sportwagen->stereoInstallatie = $Stereo;
 
-                    if ($sportwagen->Save()){
+                   /* if ($sportwagen->Save()){*/
                         $success = "De sportwagen is gereserveerd";
                         $output = $sportwagen->Reserveer();
-                    } else {
+                   /* } else {
                         $error = "Oei, er is een error opgetreden";
-                    }
+                    }*/
                 } elseif (!empty($MaxLast) && $Stereo != "y"){
                     $vrachtwagen = new vrachtwagen();
-                    $vrachtwagen->merk = $Merk;
-                    $vrachtwagen->aantalPassagiers = $AantalP;
-                    $vrachtwagen->aantalDeuren = $AantalD;
+                    $vrachtwagen->Merk = $Merk;
+                    $vrachtwagen->AantalPassagiers = $AantalP;
+                    $vrachtwagen->AantalDeuren = $AantalD;
                     $vrachtwagen->maxLast = $MaxLast;
 
-                    if ($vrachtwagen->Save()){
+                   /* if ($vrachtwagen->Save()){*/
                         $success = "De vrachtwagen is gereserveerd";
                         $output = $vrachtwagen->Reserveer();
-                    } else {
+                   /* } else {
                         $error = "Oei, er is een error opgetreden";
-                    }
+                    }*/
                 } elseif (empty($MaxLast) && $Stereo == ""){
                     $voertuig = new voertuig($Merk,$AantalP,$AantalD);
-                    $voertuig->merk = $Merk;
-                    $voertuig->aantalPassagiers = $AantalP;
-                    $voertuig->aantalDeuren = $AantalD;
+                    $voertuig->Merk = $Merk;
+                    $voertuig->AantalPassagiers = $AantalP;
+                    $voertuig->AantalDeuren = $AantalD;
 
                     if ($voertuig->Save()){
                         $success = "De wagen is gereserveerd";
@@ -74,7 +70,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Toepassing OOP - voertuigen</title>
+    <title>Auto's</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
