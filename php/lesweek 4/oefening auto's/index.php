@@ -71,7 +71,64 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Auto's</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<style>
+		body
+		{
+			background-image: url(https://images.pexels.com/photos/141635/pexels-photo-141635.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
+			background-size: cover;
+			font-family:'open sans';
+color:white;
+		}
+		form
+		{
+			width:50%;
+			margin:auto;
+			background:rgba(136, 13, 30, 0.2) ;
+			color:white;
+			display:flex;
+			flex-direction:column;
+			text-align:center;
+		}
+		input
+		{
+			margin-top:20px;
+			width:80%;
+			margin:auto;
+			height:25px;
+		}
+		button
+		{
+			margin-top:20px;
+			width:50%;
+			margin:auto;
+		}
+		.alert
+		{
+			width:50%;
+			height:50px;
+			border-radius: 10px;
+			text-align: center;
+			margin:auto;
+			margin-top:50px;
+		}
+		.reservation
+		{
+			width:50%;
+			border-radius: 10px;
+			text-align: center;
+			margin:auto;
+			margin-top:50px;
+		}
+		.alert-danger
+		{
+			background-color: red;
+		}
+		.alert-succes
+		{
+			background-color: #6CC551
+		}
+	</style>
 </head>
 <body>
 
