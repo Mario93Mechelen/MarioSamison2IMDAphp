@@ -1,7 +1,7 @@
 <?php
-	    include_once ('Voertuig.class.php');
+	    include_once ('voertuig.class.php');
 
-class Vrachtwagen extends Voertuig
+class vrachtwagen extends voertuig
 {
     protected $m_iMaxLast;
 

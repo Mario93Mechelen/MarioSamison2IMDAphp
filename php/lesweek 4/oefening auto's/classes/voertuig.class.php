@@ -9,10 +9,10 @@ class voertuig {
 				case "Merk":
 					$this->m_sMerk = $p_vValue;
 					break;
-				case "Aantal Passagiers":
+				case "AantalPassagiers":
 					$this->m_iAantalPassagiers = $p_vValue;
 					break;
-				case "Aantal Deuren":
+				case "AantalDeuren":
 					$this->m_iAantalDeuren = $p_vValue;
 					break;
 			}
@@ -22,10 +22,10 @@ class voertuig {
 				case "Merk":
 					return $this->m_sMerk;
 					break;
-				case "Aantal Passagiers":
+				case "AantalPassagiers":
 					return $this->m_iAantalPassagiers;
 					break;
-				case "Aantal Deuren":
+				case "AantalDeuren":
 					return $this->m_iAantalDeuren;
 					break;
 			}	
@@ -43,7 +43,6 @@ class voertuig {
 
         // execute statement
         $res = $statement->execute();
-
         // confirmation
         return $res;
 
@@ -51,7 +50,7 @@ class voertuig {
 
     public function Reserveer()
     {
-        return "<li><b>Merk: </b>" . $this->m_sMerk . "</li><li><b>Aantal passagiers: </b>" . $this->m_iAantalPersonen . "</li><li><b>Aantal deuren: </b>" . $this->m_iAantalDeuren . "</li>";
+        return "<li><b>Merk: </b>" . $this->m_sMerk . "</li><li><b>Aantal passagiers: </b>" . $this->m_iAantalPassagiers . "</li><li><b>Aantal deuren: </b>" . $this->m_iAantalDeuren . "</li>";
     }
 	}
 ?>

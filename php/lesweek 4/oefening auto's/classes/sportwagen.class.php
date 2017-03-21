@@ -29,7 +29,7 @@
         $conn = new PDO('mysql:host=localhost; dbname=voertuigen', 'root', '');
 
         // statement: INSERT query
-        $statement = $conn->prepare("INSERT INTO voertuig (merk, Aantal_Passagiers, Aantal_Deuren, stereoInstallatie) VALUES (:merk, :aantalPassagiers, :aantalDeuren, :stereoInstallatie);");
+        $statement = $conn->prepare("INSERT INTO voertuig (merk, Aantal_Passagiers, Aantal_Deuren, stereoinstallatie) VALUES (:merk, :aantalPassagiers, :aantalDeuren, :stereoInstallatie);");
         $statement->bindValue(":merk", $this->m_sMerk);
         $statement->bindValue(":aantalPassagiers", $this->m_iAantalPassagiers);
         $statement->bindValue(":aantalDeuren", $this->m_iAantalDeuren);
